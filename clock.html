@@ -1,0 +1,45 @@
+<html>
+
+<body>
+	<svg id="clocks" width="400" height="400">
+	
+		<rect width="100%" height="100%" fill="#cdcdcd"/>
+		<circle cx="200" cy="200" r="100" fill="#FFFFFF" />
+		
+		<rect id="seconds" width="90"  height="2" fill="red" transform="translate(200 200)"/>
+		<rect id="minutes" width="80"  height="4" fill="green" transform="translate(200 200)"/>
+		<rect id="hours" width="70"  height="6" fill="orange" transform="translate(200 200)"/>
+		
+		<circle cx="100" cy="200" r="1" fill="blue"/>
+	</svg>
+	<script>
+	
+	function addpoint(i){
+		var angle=i*30;
+		document.getElementById("clocks").innerHTML += '<circle cx="100" cy="200" r="6" fill="blue" transform="rotate('+angle+' 200 200)"/>';
+	}
+	
+	for(var m = 0; m <= 12; m++){
+		addpoint(m);
+	
+	}
+	
+	function pos(id,e){
+		document.getElementById(id).setAttribute("transform","rotate("+ e +" 200 200) translate(200 200)");
+	
+	}
+	setInterval(function(){
+		const d = new Date ();
+		var S = d.getSeconds () - 15;
+		var M = d.getMinutes () - 15;
+		var H = d.getHours () - 3;
+		
+		
+		pos ("seconds",S * 6);
+		pos ("minutes",M * 6);
+		pos ("hours",(H + (M/60)) * 30);
+	},1000);
+	
+	</script>
+</body>
+</html>

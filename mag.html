@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+		
+		<script src="https://mitricho.github.io/news.js"></script>
+		
+		
+		
+		<style>
+			body{
+				font-family: 'Bebas Neue', sans-serif;
+			}
+			h1{
+				color: #DEB887;
+				margin-left:3rem;
+		
+			}
+			p{
+				color: #BDB76B;
+			}
+			#head{
+				background:#2F4F4F;
+				position:fixed;
+				top:1rem;
+				width:100%;
+				height:6rem;
+			}
+			#content{
+				background:#8FBC8F;
+				position:fixed;
+				width:100%;
+				top:6rem;
+				bottom:19rem;
+				overflow:auto;
+				padding:2rem;
+			}
+			#result{
+				background:#527a7a;
+				position:fixed;
+				bottom:0;
+				width:100%;
+				height:25rem;
+				overflow:auto;
+			}
+			.item{
+				width:20%;
+				height:25rem;
+				margin-right:2rem;
+				display: inline-block;
+				vertical-align: top;
+				
+				padding:1rem;
+				background:#FFFFFF;
+				border-radius:2rem;
+			}
+			.item img{
+				width:100%;
+				max-height:12rem;
+				object-fit: cover;
+			}
+			button{
+				background:#5F9EA0;
+				border:0;
+				color:#FFFFFF;
+				padding:1rem;
+				border-radius:2rem;
+				cursor:pointer;
+			}
+		</style>
+		
+	</head>
+<body>
+	<div id="head">
+		
+		<h1>Good Asian Food</h1></div>
+	
+	<div id="content"></div>
+	
+	<div id="result"></div>
+
+</body>
+
+	<script>
+		function add(i){
+			//alert('Блюдо добавлено.');
+			setContent('result',news[i],i);
+			}
+		function setContent(id,line,i){
+				var n= '<div class="item">';
+					n+= '<h1>' +line.title+ '</h1>'; 
+					n+='<img src="' + line.image + '">';
+					n+= '<p>' + line.text + '</p>';
+					
+					n+= '<button onclick="add('+ i +')"> В корзину </button>';
+					n+= '</div>';
+				document.getElementById(id).innerHTML += n;
+			}
+			
+			for(var i = 0; i <news.length; i++){
+				var novost = news[i];
+				setContent('content',novost,i);
+			}
+	</script>
+</html>
